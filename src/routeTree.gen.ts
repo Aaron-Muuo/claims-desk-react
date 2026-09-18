@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiContractRouteImport } from './routes/api-contract'
+import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as FeaturesRouteImport } from './routes/features'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContractRoute = ApiContractRouteImport.update({
+  id: '/api-contract',
+  path: '/api-contract',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectureRoute = ArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FeaturesRoute = FeaturesRouteImport.update({
@@ -25,27 +37,35 @@ const FeaturesRoute = FeaturesRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api-contract': typeof ApiContractRoute
+  '/architecture': typeof ArchitectureRoute
   '/features': typeof FeaturesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api-contract': typeof ApiContractRoute
+  '/architecture': typeof ArchitectureRoute
   '/features': typeof FeaturesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api-contract': typeof ApiContractRoute
+  '/architecture': typeof ArchitectureRoute
   '/features': typeof FeaturesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features'
+  fullPaths: '/' | '/api-contract' | '/architecture' | '/features'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features'
-  id: '__root__' | '/' | '/features'
+  to: '/' | '/api-contract' | '/architecture' | '/features'
+  id: '__root__' | '/' | '/api-contract' | '/architecture' | '/features'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiContractRoute: typeof ApiContractRoute
+  ArchitectureRoute: typeof ArchitectureRoute
   FeaturesRoute: typeof FeaturesRoute
 }
 
@@ -56,6 +76,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api-contract': {
+      id: '/api-contract'
+      path: '/api-contract'
+      fullPath: '/api-contract'
+      preLoaderRoute: typeof ApiContractRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture': {
+      id: '/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof ArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/features': {
@@ -70,6 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiContractRoute: ApiContractRoute,
+  ArchitectureRoute: ArchitectureRoute,
   FeaturesRoute: FeaturesRoute,
 }
 export const routeTree = rootRouteImport
