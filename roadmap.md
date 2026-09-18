@@ -1,0 +1,4 @@
+- [ ] Build shared ClaimsDesk design system and site navigation
+- [ ] Build Home, Features, Architecture, and API Contract pages
+- [ ] Build demo login and role-aware dashboard
+- [ ] Verify desktop/mobile layouts and interactions
