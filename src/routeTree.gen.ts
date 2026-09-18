@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiContractRouteImport } from './routes/api-contract'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as LoginRouteImport } from './routes/login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +31,19 @@ const ArchitectureRoute = ArchitectureRouteImport.update({
   path: '/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FeaturesRoute = FeaturesRouteImport.update({
   id: '/features',
   path: '/features',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,34 +51,61 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/dashboard': typeof DashboardRoute
   '/features': typeof FeaturesRoute
+  '/login': typeof LoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/dashboard': typeof DashboardRoute
   '/features': typeof FeaturesRoute
+  '/login': typeof LoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/dashboard': typeof DashboardRoute
   '/features': typeof FeaturesRoute
+  '/login': typeof LoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api-contract' | '/architecture' | '/features'
+  fullPaths:
+    | '/'
+    | '/api-contract'
+    | '/architecture'
+    | '/dashboard'
+    | '/features'
+    | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api-contract' | '/architecture' | '/features'
-  id: '__root__' | '/' | '/api-contract' | '/architecture' | '/features'
+  to:
+    | '/'
+    | '/api-contract'
+    | '/architecture'
+    | '/dashboard'
+    | '/features'
+    | '/login'
+  id:
+    | '__root__'
+    | '/'
+    | '/api-contract'
+    | '/architecture'
+    | '/dashboard'
+    | '/features'
+    | '/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiContractRoute: typeof ApiContractRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  DashboardRoute: typeof DashboardRoute
   FeaturesRoute: typeof FeaturesRoute
+  LoginRoute: typeof LoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +131,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/features': {
       id: '/features'
       path: '/features'
       fullPath: '/features'
       preLoaderRoute: typeof FeaturesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +159,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiContractRoute: ApiContractRoute,
   ArchitectureRoute: ArchitectureRoute,
+  DashboardRoute: DashboardRoute,
   FeaturesRoute: FeaturesRoute,
+  LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
