@@ -13,11 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ApiContractRouteImport } from './routes/api-contract'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -37,6 +40,11 @@ const ApiContractRoute = ApiContractRouteImport.update({
 const ArchitectureRoute = ArchitectureRouteImport.update({
   id: '/architecture',
   path: '/architecture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -64,28 +72,44 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,11 +117,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/api-contract': typeof ApiContractRoute
   '/architecture': typeof ArchitectureRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -106,33 +133,42 @@ export interface FileRouteTypes {
     | '/about'
     | '/api-contract'
     | '/architecture'
+    | '/contact'
     | '/dashboard'
     | '/faq'
     | '/features'
     | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/api-contract'
     | '/architecture'
+    | '/contact'
     | '/dashboard'
     | '/faq'
     | '/features'
     | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/terms'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/api-contract'
     | '/architecture'
+    | '/contact'
     | '/dashboard'
     | '/faq'
     | '/features'
     | '/login'
     | '/pricing'
+    | '/privacy'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -140,11 +176,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ApiContractRoute: typeof ApiContractRoute
   ArchitectureRoute: typeof ArchitectureRoute
+  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
   LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -175,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/architecture'
       fullPath: '/architecture'
       preLoaderRoute: typeof ArchitectureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -212,6 +258,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -220,11 +280,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ApiContractRoute: ApiContractRoute,
   ArchitectureRoute: ArchitectureRoute,
+  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
   LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

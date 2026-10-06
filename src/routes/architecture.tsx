@@ -120,7 +120,7 @@ function ArchitecturePage() {
                   "Active cover, remaining limits, deductibles, endorsements, and claim exposure in one consistent record.",
                 ],
               ].map(([Icon, t, c]) => (
-                <article key={t as string} className="feature-card">
+                <article key={t as string} className="rounded-[2rem] border border-border/60 bg-card p-6 md:p-8 hover:-translate-y-1 transition-transform">
                   <span className="icon-well">
                     <Icon />
                   </span>
@@ -151,7 +151,7 @@ function ArchitecturePage() {
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
-                <div className="rounded-3xl border border-ink-border bg-ink-raised p-5">
+                <div className="rounded-[2rem] border border-ink-border bg-ink-raised p-5">
                   <LayoutDashboard className="mb-4 size-6 text-brand-bright" />
                   <h3 className="text-sm font-bold">Client Layer</h3>
                   <p className="mt-2 text-xs leading-5 text-ink-muted">
@@ -159,7 +159,7 @@ function ArchitecturePage() {
                     fast, responsive status pipelines.
                   </p>
                 </div>
-                <div className="rounded-3xl border border-ink-border bg-ink-raised p-5">
+                <div className="rounded-[2rem] border border-ink-border bg-ink-raised p-5">
                   <Layers className="mb-4 size-6 text-brand-bright" />
                   <h3 className="text-sm font-bold">API & Logic</h3>
                   <p className="mt-2 text-xs leading-5 text-ink-muted">
@@ -167,7 +167,7 @@ function ArchitecturePage() {
                     business workflow enforcement.
                   </p>
                 </div>
-                <div className="rounded-3xl border border-ink-border bg-ink-raised p-5">
+                <div className="rounded-[2rem] border border-ink-border bg-ink-raised p-5">
                   <Database className="mb-4 size-6 text-brand-bright" />
                   <h3 className="text-sm font-bold">Data Storage</h3>
                   <p className="mt-2 text-xs leading-5 text-ink-muted">
@@ -181,7 +181,7 @@ function ArchitecturePage() {
         </section>
         <section className="py-16">
           <div className="mx-auto max-w-5xl px-5 lg:px-8">
-            <div className="flex gap-4 rounded-2xl border border-brand/20 bg-brand-soft p-6">
+            <div className="flex gap-4 rounded-[2rem] border border-brand/20 bg-brand-soft p-6">
               <ShieldCheck className="size-6 shrink-0 text-brand" />
               <div>
                 <p className="font-bold">Portfolio implementation</p>
@@ -200,7 +200,7 @@ function ArchitecturePage() {
 function Flow({ icon: Icon, title, note }: { icon: typeof Boxes; title: string; note: string }) {
   return (
     <div className="flex-1 text-center">
-      <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-primary text-primary-foreground">
+      <span className="mx-auto grid size-12 place-items-center rounded-[2rem] bg-primary text-primary-foreground">
         <Icon />
       </span>
       <p className="mt-4 text-sm font-bold">{title}</p>

@@ -8,10 +8,12 @@ import {
   GitBranch,
   LockKeyhole,
   Scale,
+  Globe,
   TimerReset,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MarketingLayout, PageIntro } from "@/components/claimsdesk/site-shell";
+import { ClaimsDemoCta } from "@/components/claimsdesk/claims-demo-cta";
 export const Route = createFileRoute("/features")({
   head: () => ({
     meta: [
@@ -35,43 +37,63 @@ export const Route = createFileRoute("/features")({
 const items = [
   [
     GitBranch,
-    "Delegated authority engine",
-    "Encode insurer-specific approval bands by role, amount, line of business, and exception class.",
+    "Tiered spending limits",
+    "Routes each claim to the right person based on cost, allowing staff to resolve routine bills quickly while managers review larger payouts.",
     [
-      "Claims Officer: below KSh 100,000",
-      "Underwriting Manager: below KSh 500,000",
-      "Finance Director: KSh 500,000+",
+      "Claims Officers: under KSh 100,000",
+      "Underwriting Managers: under KSh 500,000",
+      "Finance Directors: KSh 500,000 and above",
     ],
   ],
   [
     DatabaseZap,
-    "Financial transaction integrity",
-    "Commit reserve releases, deductibles, and settlement entries as one atomic financial event.",
-    ["Idempotent payout execution", "Policy balance locks", "Concurrent transaction safety"],
+    "Safe balance deductions",
+    "Verifies policy limits and deducts balances in a single protected step, preventing duplicate payouts or overdrawn customer accounts.",
+    [
+      "Instant coverage limit checks",
+      "Zero risk of paying twice",
+      "Protected account balances",
+    ],
   ],
   [
     BellRing,
-    "Continuous SLA supervision",
-    "Monitor every open claim around the clock and surface service risks before commitments are missed.",
-    ["48-hour escalation rules", "Priority queue re-ranking", "Owner and supervisor alerts"],
+    "48-hour delay alerts",
+    "Tracks open files around the clock and automatically alerts managers whenever a claim sits untouched for longer than two days.",
+    [
+      "Automatic 48-hour escalation timer",
+      "Moves delayed files to the top of the queue",
+      "Instant supervisor notifications",
+    ],
   ],
   [
     FileLock2,
-    "Regulator-ready evidence",
-    "Preserve who changed what, why it changed, and which authority approved every financial outcome.",
-    ["Append-only decision history", "Timestamped evidence chain", "Exportable audit reports"],
+    "Tamper-proof audit history",
+    "Records an unchangeable timeline of every file upload, reviewer comment, and sign-off down to the exact second for regulatory checks.",
+    [
+      "Permanent log of every action taken",
+      "Exact timestamps on evidence and notes",
+      "One-click reports for compliance teams",
+    ],
   ],
   [
     LockKeyhole,
-    "Strict separation of duties",
-    "Keep intake, assessment, authorization, payment, and audit permissions appropriately distinct.",
-    ["Least-privilege access", "Role-specific work queues", "Read-only auditor mode"],
+    "Strict role separation",
+    "Prevents fraud by ensuring the person who logs a claim cannot approve it, keeping all staff inside their authorized responsibilities.",
+    [
+      "Separation between intake and approval",
+      "Permissions limited to job function",
+      "Read-only access mode for external auditors",
+    ],
   ],
   [
     TimerReset,
-    "Operational resilience",
-    "Keep work moving with safe retries, exception handling, and clear recovery states.",
-    ["Retry-safe jobs", "Exception workbench", "Full event visibility"],
+    "Automatic error recovery",
+    "Safely re-runs interrupted operations and flags unexpected errors, ensuring payments and updates never get stuck mid-process.",
+    [
+      "Safe automatic retries on network drops",
+      "Dedicated screen for flagged issues",
+      "Zero lost work during system interruptions",
+    ],
   ],
 ] as const;
 function FeaturesPage() {
@@ -80,14 +102,14 @@ function FeaturesPage() {
       <main className="animate-fade-in-top">
         <PageIntro
           eyebrow="Platform capabilities"
-          title="Controls that make claims operations dependable."
-          description="ClaimsDesk combines financial safeguards, configurable authority rules, and complete operational traceability in one focused platform."
+          title="Controls that make ClaimsDesk dependable."
+          description="ClaimsDesk combines financial safeguards, configurable rules, and complete traceability in one focused platform."
         />
         <section className="py-20">
           <div className="mx-auto max-w-5xl px-5 lg:px-8">
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {items.map(([Icon, title, copy, bullets]) => (
-                <article key={title} className="feature-card">
+                <article key={title} className="rounded-[2rem] border border-border/60 bg-card p-6 md:p-8 hover:-translate-y-1 transition-transform">
                   <span className="icon-well">
                     <Icon />
                   </span>
@@ -107,25 +129,44 @@ function FeaturesPage() {
           </div>
         </section>
         <section className="bg-ink py-18 text-ink-foreground">
-          <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-8 px-5 md:flex-row md:items-center lg:px-8">
+          <div className="mx-auto max-w-5xl flex flex-col items-start justify-between px-5 lg:px-8">
             <div>
               <div className="flex items-center gap-2 text-brand-bright">
                 <Scale className="size-5" />
                 <span className="text-xs font-bold uppercase tracking-[.14em]">
-                  Designed for accountability
+                  Designed for simplicity
                 </span>
               </div>
-              <h2 className="mt-4 max-w-2xl text-3xl font-bold md:text-4xl">
-                Operational speed without weakening financial governance.
+              <h2 className="mt-4 w-full text-3xl font-bold md:text-4xl">
+                Built to make claims simple, faster & automatic.
               </h2>
+              <p className="mt-4 w-full text-base leading-relaxed text-muted-foreground/80 md:text-lg">
+                Real efficiency is not about extra buttons or complex settings. ClaimsDesk simplifies your everyday tasks by handling routine checks, tracking review deadlines, and passing approvals forward on its own, so files never get stuck on someone's desk.
+              </p>
             </div>
-            <Button asChild variant="secondary">
-              <Link to="/login">
-                Try the staff portal <ArrowRight />
-              </Link>
-            </Button>
+
           </div>
         </section>
+        <section className="bg-background py-18">
+          <div className="mx-auto max-w-5xl flex flex-col items-start justify-between px-5 lg:px-8">
+            <div>
+              <div className="flex items-center gap-2 text-brand">
+                <Globe className="size-5" />
+                <span className="text-xs font-bold uppercase tracking-[.14em]">
+                  Flexible for Any Region. Built Around Your Rules.
+                </span>
+              </div>
+              <p className="mt-4 w-full text-base leading-relaxed text-muted-foreground md:text-lg">
+                ClaimsDesk seamlessly supports any currency and adapts to any market. You're never locked into rigid workflows—your team can customize approval thresholds, review deadlines, and payout logic directly from the dashboard, zero coding required.
+              </p>
+              <p className="mt-4 w-full text-base leading-relaxed text-muted-foreground md:text-lg">
+                Because every institution manages risk differently, we give you absolute control over your operational rules. If your team has specialized regulatory guidelines, intricate internal hierarchies, or relies on legacy core systems, our Enterprise Edition provides custom-built integrations and tools engineered specifically for your business.
+              </p>
+            </div>
+          </div>
+        </section>
+        {/* CTA Section */}
+        <ClaimsDemoCta />
       </main>
     </MarketingLayout>
   );

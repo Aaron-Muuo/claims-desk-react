@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { ScrollToTop } from "@/components/ui/scroll-to-top";
 
 function NotFoundComponent() {
   return (
@@ -122,14 +123,19 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+import { CurrencyProvider } from "@/lib/currency";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
-      <Toaster richColors position="top-right" />
+      <CurrencyProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <Toaster richColors position="top-right" />
+        <ScrollToTop />
+      </CurrencyProvider>
     </QueryClientProvider>
   );
 }

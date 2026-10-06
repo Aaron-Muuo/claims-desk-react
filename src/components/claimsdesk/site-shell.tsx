@@ -2,6 +2,8 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, ShieldCheck, X, ChevronDown, ArrowRight } from "lucide-react";
 import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { CurrencySwitcher } from "./currency-switcher";
+import { LanguageSwitcher } from "./language-switcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -34,7 +36,7 @@ export function SiteHeader() {
     <Link
       to={to}
       onClick={() => setOpen(false)}
-      className={`flex h-full items-center rounded px-4 text-xs font-semibold transition-colors ${
+      className={`flex h-full items-center rounded-full px-4 text-xs font-semibold transition-colors ${
         pathname === to
           ? "bg-secondary text-foreground"
           : "text-muted-foreground hover:text-foreground"
@@ -59,7 +61,7 @@ export function SiteHeader() {
             <NavLink to="/faq" label="FAQ" />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex h-full items-center gap-1 rounded px-4 text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground">
+                <button className="flex h-full items-center gap-1 rounded-full px-4 text-xs font-semibold text-muted-foreground transition-colors hover:text-foreground">
                   More <ChevronDown className="size-3" />
                 </button>
               </DropdownMenuTrigger>
@@ -112,6 +114,7 @@ export function SiteHeader() {
                 </div>
               </DropdownMenuContent>
             </DropdownMenu>
+            <NavLink to="/contact" label="Contact Us" />
           </nav>
           <Button asChild className="h-10 rounded-full px-5">
             <Link to="/login" className="flex items-center gap-2">
@@ -196,6 +199,13 @@ export function SiteHeader() {
 export function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <>
+      <div className="w-full bg-brand text-brand-foreground py-1">
+        <div className="mx-auto flex max-w-5xl justify-end items-center gap-1 px-5 lg:px-8">
+          <LanguageSwitcher />
+          <div className="h-4 w-px bg-white/20 mx-1" />
+          <CurrencySwitcher />
+        </div>
+      </div>
       <SiteHeader />
       {children}
       <SiteFooter />
@@ -206,26 +216,37 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
 function SiteFooter() {
   return (
     <footer className="border-t border-border bg-ink text-ink-foreground">
-      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-12 lg:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-12 lg:grid-cols-[2fr_1fr_1fr_1fr] lg:px-8">
         <div>
           <Brand inverse />
           <p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">
-            A workflow and approval engine engineered for licensed insurers, underwriters, and
-            regulated claims teams.
+            A workflow and approval platform for licensed insurers, underwriters, and
+             claims teams.
           </p>
         </div>
         <div>
           <p className="footer-title">Platform</p>
           <div className="footer-links">
+            <Link to="/pricing">Pricing</Link>
             <Link to="/features">Features</Link>
             <Link to="/architecture">Architecture</Link>
-            <Link to="/api-contract">API Contract</Link>
+            <Link to="/api-contract">Developer API</Link>
+          </div>
+        </div>
+        <div>
+          <p className="footer-title">Relevant Links</p>
+          <div className="footer-links">
+            <Link to="/about">About</Link>
+            <Link to="/faq">FAQ</Link>
+            <Link to="/contact">Contact Us</Link>
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms of Service</Link>
           </div>
         </div>
         <div>
           <p className="footer-title">Access</p>
           <div className="footer-links">
-            <Link to="/login">Staff Portal</Link>
+            <Link to="/login">Try Demo</Link>
             <span>Enterprise support</span>
             <span>Audit documentation</span>
           </div>
@@ -233,7 +254,7 @@ function SiteFooter() {
       </div>
       <div className="mx-auto flex max-w-5xl flex-col gap-2 border-t border-ink-border px-5 py-5 text-xs text-ink-muted sm:flex-row sm:justify-between lg:px-8">
         <span>© 2026 ClaimsDesk. Portfolio demonstration.</span>
-        <span>Nairobi, Kenya · Built for regulated operations</span>
+        <span>Built by Verceed.</span>
       </div>
     </footer>
   );
@@ -255,7 +276,7 @@ export function PageIntro({
         <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-foreground md:text-6xl">
           {title}
         </h1>
-        <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
+        <p className="mt-6 w-full text-base leading-7 text-muted-foreground md:text-lg">
           {description}
         </p>
       </div>

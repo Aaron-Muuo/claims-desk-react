@@ -1,12 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 import { MarketingLayout, PageIntro } from "@/components/claimsdesk/site-shell";
+import { ClaimsDemoCta } from "@/components/claimsdesk/claims-demo-cta";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ShieldCheck, ServerCog, LockKeyhole, Coins } from "lucide-react";
+import { ShieldCheck, ServerCog, LockKeyhole, Coins, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -34,6 +36,10 @@ const faqs = [
       {
         q: "What happens when a claim exceeds the 48-hour review window?",
         a: "An automated background worker continuously tracks active claims against defined SLAs. If a claim sits in any officer's queue without action for more than 48 hours, the platform automatically flags it as Escalated, shifts its visual priority in the pipeline, and alerts supervisors to resolve the bottleneck.",
+      },
+      {
+        q: "Can ClaimsDesk be used in other countries or customized for our specific rules?",
+        a: "Yes. ClaimsDesk adapts to any market and local currency. Your team can easily configure all spending limits, escalation timers, and payout rules. For organizations with complex regulatory needs, unique hierarchies, or legacy systems, our Enterprise Edition provides fully tailored integrations and custom-built features.",
       },
     ],
   },
@@ -129,6 +135,8 @@ function FaqPage() {
             </div>
           </div>
         </section>
+        {/* CTA Section */}
+        <ClaimsDemoCta />
       </main>
     </MarketingLayout>
   );

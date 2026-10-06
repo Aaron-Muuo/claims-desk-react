@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MarketingLayout, PageIntro } from "@/components/claimsdesk/site-shell";
+import { ClaimsDemoCta } from "@/components/claimsdesk/claims-demo-cta";
 import { Button } from "@/components/ui/button";
 import {
   Activity,
@@ -17,6 +18,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   Users,
+  ArrowRight,
 } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -135,7 +137,7 @@ function AboutPage() {
         />
 
         {/* The Operational Problem */}
-        <section className="bg-surface-soft py-20 lg:py-28">
+        <section className="bg-background py-20 lg:py-28">
           <div className="mx-auto max-w-5xl px-5 lg:px-8">
             <div className="text-center">
               <p className="eyebrow">The Operational Problem</p>
@@ -147,7 +149,7 @@ function AboutPage() {
             </div>
             <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {problems.map((problem) => (
-                <div key={problem.title} className="rounded-3xl border border-border bg-card p-6">
+                <div key={problem.title} className="rounded-[2rem] border border-border bg-card p-6">
                   <div className="icon-well mb-5">
                     <problem.icon />
                   </div>
@@ -174,7 +176,7 @@ function AboutPage() {
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 {mechanics.map((mechanic) => (
-                  <div key={mechanic.title} className="feature-card">
+                  <div key={mechanic.title} className="rounded-[2rem] border border-border/60 bg-card p-6 md:p-8 hover:-translate-y-1 transition-transform">
                     <div className="mb-4 flex items-center gap-3">
                       <span className="icon-well-small">
                         <mechanic.icon />
@@ -232,7 +234,7 @@ function AboutPage() {
                   {personas.map((persona) => (
                     <div
                       key={persona.role}
-                      className="flex gap-4 rounded-3xl border border-border bg-card p-4"
+                      className="flex gap-4 rounded-[2rem] border border-border bg-card p-4"
                     >
                       <div className="mt-1 flex-none text-brand">
                         <persona.icon className="size-5" />
@@ -263,49 +265,41 @@ function AboutPage() {
               </p>
             </div>
 
-            <div
-              className="workflow-line mt-14"
-              style={{ gridTemplateColumns: "repeat(5, minmax(0, 1fr))" }}
-            >
-              {workflow.map((step, i) => (
-                <div key={step.title} className="workflow-item">
-                  <span className="workflow-number">{i + 1}</span>
-                  <div>
-                    <p className="text-xs font-bold leading-tight">{step.title}</p>
-                    <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
-                      {step.desc}
-                    </p>
+            <div className="mt-14 flex w-full flex-col">
+              {/* Row 1 */}
+              <div className="grid md:grid-cols-3">
+                {workflow.slice(0, 3).map((step, i) => (
+                  <div key={step.title} className={`p-8 md:border-b border-border ${i < 2 ? 'md:border-r' : ''} ${i < 3 ? 'border-b md:border-b' : ''}`}>
+                    <div className="flex gap-4">
+                      <span className="workflow-number">{i + 1}</span>
+                      <div>
+                        <p className="text-sm font-bold leading-tight">{step.title}</p>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              {/* Row 2 */}
+              <div className="grid md:grid-cols-2">
+                {workflow.slice(3, 5).map((step, i) => (
+                  <div key={step.title} className={`p-8 ${i === 0 ? 'md:border-r border-b md:border-b-0 border-border' : ''}`}>
+                    <div className="flex gap-4">
+                      <span className="workflow-number">{i + 4}</span>
+                      <div>
+                        <p className="text-sm font-bold leading-tight">{step.title}</p>
+                        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{step.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="py-10 lg:py-16">
-          <div className="mx-auto max-w-5xl px-5 lg:px-8">
-            <div className="flex flex-col items-center justify-between gap-8 rounded-[2rem] bg-brand p-10 text-primary-foreground md:flex-row md:p-14 shadow-2xl">
-              <div className="max-w-xl text-center md:text-left">
-                <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-                  Ready to transform your claims?
-                </h2>
-                <p className="mt-4 text-brand-soft text-sm md:text-base leading-relaxed opacity-90">
-                  Experience firsthand how our automated workflow reduces processing time,
-                  eliminates manual errors, and enforces your financial thresholds perfectly.
-                </p>
-              </div>
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className="shrink-0 rounded-full px-10 py-6 text-base font-bold shadow-lg transition-transform hover:scale-105"
-              >
-                <Link to="/login">Try demo</Link>
-              </Button>
-            </div>
-          </div>
-        </section>
+        <ClaimsDemoCta />
       </main>
     </MarketingLayout>
   );

@@ -17,6 +17,8 @@ import {
   HeartPulse,
   Building2,
 } from "lucide-react";
+import { HeroAnimatedGrid } from "@/components/claimsdesk/hero-animated-grid";
+import { ClaimsDemoCta } from "@/components/claimsdesk/claims-demo-cta";
 import { Button } from "@/components/ui/button";
 import { MarketingLayout } from "@/components/claimsdesk/site-shell";
 
@@ -46,51 +48,49 @@ const features = [
   {
     icon: GitBranch,
     n: "01",
-    title: "Threshold-Based Approval Rules",
-    copy: "Route every claim to the right authority level based on exposure, policy class, and approval mandate.",
-    note: "Officer < 100k · Underwriter < 500k · Director > 500k",
+    title: "Automatic Spending Limits",
+    copy: "Send bills to the right person based on the amount, so staff handle small payouts while managers review larger sums.",
+    note: "Officer < KSh 100k · Manager < KSh 500k · Director > KSh 500k",
   },
   {
     icon: Database,
     n: "02",
-    title: "Transactional Database Integrity",
-    copy: "Atomic policy balance deductions preserve financial correctness through every concurrent payout event.",
-    note: "Zero double-spend risk",
+    title: "Safe Balance Deductions",
+    copy: "Instantly update customer policy limits with each payout so money is never deducted or paid out twice.",
+    note: "Zero risk of duplicate payments",
   },
   {
     icon: Clock3,
     n: "03",
-    title: "24/7 SLA Background Escalation",
-    copy: "Continuously monitor approval queues and automatically flag claims waiting longer than 48 hours.",
-    note: "Always-on escalation engine",
+    title: "48-Hour Delay Alerts",
+    copy: "Watch pending files day and night, automatically flagging any claim left waiting for more than 48 hours.",
+    note: "Automatic supervisor alerts",
   },
   {
     icon: FileCheck2,
     n: "04",
-    title: "Statutory & Audit Readiness",
-    copy: "Create an immutable record of every decision, handoff, evidence update, and financial authorization.",
-    note: "Complete regulatory traceability",
+    title: "Tamper-Proof Activity Log",
+    copy: "Keep a permanent, unchangeable record of every review, document upload, and approved payment down to the second.",
+    note: "Inspection-ready history",
   },
 ];
 function HomePage() {
   return (
     <MarketingLayout>
       <main className="animate-fade-in-top">
-        <section className="hero-grid">
-          <div className="mx-auto flex min-h-[720px] max-w-5xl flex-col items-center justify-center px-5 py-16 text-center lg:px-8 lg:py-20">
-            <div className="flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-soft px-3 py-1.5 text-xs font-semibold text-brand">
-                <BadgeCheck className="size-3.5" />
+        <section className="relative overflow-hidden bg-background">
+          <HeroAnimatedGrid />
+          <div className="relative z-10 mx-auto flex min-h-[720px] max-w-5xl flex-col items-center justify-center px-5 py-16 text-center lg:px-8 lg:py-20 pointer-events-none">
+            <div className="flex flex-col items-center pointer-events-auto">
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-500 bg-amber-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm">
+                <BadgeCheck className="size-3.5 text-white" />
                 Built for licensed insurance operations
               </div>
-              <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-[1.02] tracking-tight text-foreground md:text-7xl">
-                Automate insurance claims with{" "}
-                <span className="text-brand">absolute audit integrity.</span>
+              <h1 className="mt-7 max-w-4xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                Automated Claims Workflows and Settlement Auditing for <span className="text-brand">Licensed Insurers.</span>
               </h1>
               <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground md:text-lg">
-                Purpose-built for insurance providers, underwriters, and claims officers. Enforce
-                financial sign-off thresholds, automate SLA escalations, and eliminate manual review
-                bottlenecks.
+                Purpose-built for insurance providers and underwriters to automate claim intake, validate policy limits in real time, and record every adjudication decision down to the second.
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <Button asChild size="lg">
@@ -99,7 +99,7 @@ function HomePage() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link to="/architecture">Explore System Architecture</Link>
+                  <Link to="/pricing">Explore pricing</Link>
                 </Button>
               </div>
               <div className="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3 text-xs font-medium text-muted-foreground">
@@ -113,7 +113,7 @@ function HomePage() {
                 </span>
                 <span className="flex items-center gap-2">
                   <Check className="size-4 text-brand" />
-                  API-first deployment
+                  Automated workflows
                 </span>
               </div>
             </div>
@@ -121,22 +121,22 @@ function HomePage() {
         </section>
 
         {/* Clients Section */}
-        <section className="border-t border-b border-border bg-card py-10 overflow-hidden">
-          <div className="mx-auto max-w-5xl px-5 lg:px-8">
-            <p className="text-center text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-8">
-              Trusted by innovative claims teams worldwide
+        <section className="bg-brand py-10 overflow-hidden text-white w-full">
+          <div className="w-full px-5 md:px-12 lg:px-20">
+            <p className="text-center text-xs font-semibold uppercase tracking-wider text-white/70 mb-8">
+              Trusted by innovative claims teams
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-50 grayscale">
-              <div className="flex items-center gap-2 text-xl font-serif font-bold text-foreground">
+            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 opacity-80">
+              <div className="flex items-center gap-2 text-xl font-serif font-bold text-white">
                 <ShieldCheck className="size-6" /> Aegis Life
               </div>
-              <div className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground">
+              <div className="flex items-center gap-2 text-xl font-bold tracking-tight text-white">
                 <Car className="size-7" /> Vanguard Auto
               </div>
-              <div className="flex items-center gap-2 text-xl font-medium tracking-wide text-foreground">
+              <div className="flex items-center gap-2 text-xl font-medium tracking-wide text-white">
                 <HeartPulse className="size-6" /> Horizon Health
               </div>
-              <div className="flex items-center gap-2 text-xl font-black uppercase tracking-tighter text-foreground">
+              <div className="flex items-center gap-2 text-xl font-black tracking-tighter text-white">
                 <Building2 className="size-6" /> Apex Property
               </div>
             </div>
@@ -147,28 +147,28 @@ function HomePage() {
             <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
               <div>
                 <p className="eyebrow">About ClaimsDesk</p>
-                <h2 className="section-title">A purpose-built engine for insurance operations.</h2>
+                <h2 className="section-title">A purpose-built platform for insurance operations.</h2>
                 <p className="mt-4 text-sm leading-7 text-muted-foreground">
                   In traditional environments, processing relies heavily on physical documentation
-                  and shared inboxes. We address the core operational challenges of high-volume
+                  and shared inboxes. ClaimsDesk address the core operational challenges of high-volume
                   operations: manual handoffs, unverified policy payouts, compliance
                   vulnerabilities, and missed SLAs.
                 </p>
                 <Button asChild variant="link" className="mt-6 p-0 font-bold text-brand h-auto">
                   <Link to="/about" className="flex items-center gap-2">
-                    Read the full story <ArrowRight className="size-4" />
+                    See more <ArrowRight className="size-4" />
                   </Link>
                 </Button>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-border bg-card p-6">
+              <div className="grid gap-6 sm:grid-cols-2 items-start">
+                <div className="rounded-[2rem] border border-border/60 bg-card p-8">
                   <Users className="mb-4 size-6 text-brand" />
                   <h3 className="text-sm font-bold">Multi-Role Control</h3>
                   <p className="mt-2 text-xs leading-5 text-muted-foreground">
                     Officer, Underwriter, and Director segregation of duties.
                   </p>
                 </div>
-                <div className="rounded-3xl border border-border bg-card p-6 sm:mt-8">
+                <div className="rounded-[2rem] border border-border/60 bg-card p-8 sm:mt-24">
                   <ShieldCheck className="size-6 text-brand mb-4" />
                   <h3 className="text-sm font-bold">Fraud Prevention</h3>
                   <p className="mt-2 text-xs leading-5 text-muted-foreground">
@@ -184,11 +184,11 @@ function HomePage() {
           <div className="mx-auto max-w-5xl px-5 lg:px-8">
             <div className="text-center mb-16">
               <p className="eyebrow">Platform Features</p>
-              <h2 className="section-title mx-auto">Deterministic workflow mechanics.</h2>
+              <h2 className="section-title mx-auto">Everything You Need to Settle Claims with Confidence.</h2>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {features.map((f) => (
-                <article key={f.title} className="feature-card">
+                <article key={f.title} className="rounded-[2rem] border border-border/60 bg-card p-6 md:p-8 hover:-translate-y-1 transition-transform">
                   <div className="flex items-start justify-between">
                     <span className="icon-well">
                       <f.icon />
@@ -327,6 +327,8 @@ function HomePage() {
             </div>
           </div>
         </section>
+        {/* CTA Section */}
+        <ClaimsDemoCta />
       </main>
     </MarketingLayout>
   );

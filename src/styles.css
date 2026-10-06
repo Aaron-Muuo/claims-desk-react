@@ -22,13 +22,13 @@
   --font-sans: "DM Sans", sans-serif;
   --font-display: "Manrope", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: calc(2rem - 4px);
+  --radius-md: calc(2rem - 2px);
+  --radius-lg: 2rem;
+  --radius-xl: calc(2rem + 4px);
+  --radius-2xl: calc(2rem + 8px);
+  --radius-3xl: calc(2rem + 12px);
+  --radius-4xl: calc(2rem + 16px);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -189,29 +189,29 @@
 
 @utility eyebrow { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; color: var(--color-brand); }
 @utility section-title { margin-top: 1rem; max-width: 42rem; font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.08; font-weight: 800; }
-@utility feature-card { border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-card); padding: 1.75rem; transition: transform .2s ease; }
-@utility icon-well { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border-radius: .35rem; background: var(--color-brand-soft); color: var(--color-brand); & svg { width: 1.1rem; } }
-@utility icon-well-small { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: .3rem; background: var(--color-secondary); color: var(--color-brand); & svg { width: .9rem; } }
-@utility icon-well-muted { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border-radius: .35rem; background: var(--color-secondary); color: var(--color-muted-foreground); & svg { width: 1.1rem; } }
-@utility engine-panel { overflow: hidden; border: 1px solid var(--color-ink-border); border-radius: .65rem; background: var(--color-ink); color: var(--color-ink-foreground); }
+@utility feature-card { border: 1px solid var(--color-border); border-radius: 2rem; background: var(--color-card); padding: 1.75rem; transition: transform .2s ease; }
+@utility icon-well { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border-radius: 1rem; background: var(--color-brand-soft); color: var(--color-brand); & svg { width: 1.1rem; } }
+@utility icon-well-small { display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 0.75rem; background: var(--color-secondary); color: var(--color-brand); & svg { width: .9rem; } }
+@utility icon-well-muted { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; border-radius: 1rem; background: var(--color-secondary); color: var(--color-muted-foreground); & svg { width: 1.1rem; } }
+@utility engine-panel { overflow: hidden; border: 1px solid var(--color-ink-border); border-radius: 2rem; background: var(--color-ink); color: var(--color-ink-foreground); }
 @utility status-dot { width: .45rem; height: .45rem; border-radius: 999px; background: var(--color-brand-bright); }
-@utility pipeline-step { display: flex; min-height: 5rem; flex-direction: column; justify-content: center; border: 1px solid var(--color-ink-border); border-radius: .3rem; padding: .5rem; color: var(--color-ink-muted); transition: all .2s ease; }
+@utility pipeline-step { display: flex; min-height: 5rem; flex-direction: column; justify-content: center; border: 1px solid var(--color-ink-border); border-radius: 0.75rem; padding: .5rem; color: var(--color-ink-muted); transition: all .2s ease; }
 @utility pipeline-step-active { border-color: var(--color-brand-bright); background: var(--color-ink-raised); color: var(--color-ink-foreground); }
 @utility workflow-line { display: grid; gap: 1rem; @media (width >= 48rem) { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @utility workflow-item { position: relative; display: flex; gap: 1rem; border-top: 1px solid var(--color-border); padding-top: 1.25rem; }
 @utility workflow-number { display: grid; width: 1.75rem; height: 1.75rem; flex: none; place-items: center; border-radius: 999px; background: var(--color-primary); color: var(--color-primary-foreground); font-size: .65rem; font-weight: 800; }
 @utility footer-title { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--color-ink-foreground); }
 @utility footer-links { margin-top: 1rem; display: grid; gap: .65rem; font-size: .8rem; color: var(--color-ink-muted); }
-@utility comparison-card { border: 1px solid var(--color-border); border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.5rem); }
+@utility comparison-card { border: 1px solid var(--color-border); border-radius: 2rem; padding: clamp(1.5rem, 4vw, 2.5rem); }
 @utility comparison-manual { background: var(--color-dashboard); }
 @utility comparison-auto { border-color: color-mix(in oklab, var(--color-brand) 30%, var(--color-border)); background: var(--color-brand-soft); }
-@utility architecture-flow { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-card); padding: 2rem; & > svg { transform: rotate(90deg); color: var(--color-muted-foreground); } @media (width >= 48rem) { flex-direction: row; & > svg { transform: none; } } }
+@utility architecture-flow { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; border: 1px solid var(--color-border); border-radius: 2rem; background: var(--color-card); padding: 2rem; & > svg { transform: rotate(90deg); color: var(--color-muted-foreground); } @media (width >= 48rem) { flex-direction: row; & > svg { transform: none; } } }
 @utility method { border-radius: .2rem; padding: .2rem .35rem; font-family: var(--font-mono); font-size: .58rem; font-weight: 700; }
 @utility method-get { background: var(--color-brand-soft); color: var(--color-brand); }
 @utility method-post { background: var(--color-secondary); color: var(--color-info); }
 @utility login-brand-panel { position: relative; overflow: hidden; background: var(--color-ink); padding: 2rem; color: var(--color-ink-foreground); &::after { position: absolute; inset: 0; content: ""; background-image: linear-gradient(var(--color-ink-border) 1px, transparent 1px), linear-gradient(90deg, var(--color-ink-border) 1px, transparent 1px); background-size: 56px 56px; opacity: .4; } @media (width < 64rem) { display: none; } }
 @utility form-label { display: block; font-size: .75rem; font-weight: 700; color: var(--color-foreground); }
-@utility role-preset { display: flex; min-width: 0; align-items: center; gap: .65rem; border: 1px solid var(--color-border); border-radius: .35rem; padding: .65rem; transition: all .15s ease; &:hover { border-color: var(--color-brand); } }
+@utility role-preset { display: flex; min-width: 0; align-items: center; gap: .65rem; border: 1px solid var(--color-border); border-radius: 1rem; padding: .65rem; transition: all .15s ease; &:hover { border-color: var(--color-brand); } }
 @utility role-preset-active { border-color: var(--color-brand); background: var(--color-brand-soft); }
 @utility status-warning { border-color: color-mix(in oklab, var(--color-warning) 35%, transparent); background: color-mix(in oklab, var(--color-warning) 10%, transparent); color: oklch(0.48 0.12 70); }
 @utility status-info { border-color: color-mix(in oklab, var(--color-info) 30%, transparent); background: color-mix(in oklab, var(--color-info) 9%, transparent); color: var(--color-info); }
