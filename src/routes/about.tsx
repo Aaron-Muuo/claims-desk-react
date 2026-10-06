@@ -126,6 +126,54 @@ const workflow = [
   },
 ];
 
+const aiWorkflow = [
+  {
+    stage: "1. Intake (FNOL)",
+    capability: "Document Vision & Extraction",
+    action: "Ingests uploaded garage estimates, receipts, or police abstracts. Auto-extracts incident dates, loss descriptions, itemized costs, and initial claimed amounts in KSh."
+  },
+  {
+    stage: "2. UnderReview",
+    capability: "Completeness & Coverage Verification",
+    action: "Cross-references extracted claim facts against the member's policy schedule. Flags excluded perils, expired coverages, or missing mandatory attachments before staff touches the file."
+  },
+  {
+    stage: "3. Assessment",
+    capability: "Loss Adjusting & Cost Auditing",
+    action: "Compares itemized garage repair bills against standard market part prices in Kenya. Flags suspicious line items (e.g., inflated spare parts or labor charges)."
+  },
+  {
+    stage: "4. Escalation",
+    capability: "Anomaly & Fraud Detection",
+    action: "Computes a composite Risk Score (0–100). Flags cross-tenant duplicate submissions, frequent claimants, or inconsistent incident timing."
+  },
+  {
+    stage: "5. Sign-off / Rejection",
+    capability: "Natural Language Generation",
+    action: "If approved, prepares discharge vouchers with itemized breakdowns. If rejected, generates formal repudiation letters citing exact policy clauses and exclusion codes."
+  }
+];
+
+const aiBusinessValue = [
+  {
+    title: "Straight-Through Processing (STP) for Low-Value Claims",
+    desc: "Claims under KSh 25,000 with zero fraud flags and high document confidence can move from Submitted directly to Approved automatically, reducing officer triage workload by up to 40%."
+  },
+  {
+    title: "Cycle Time Reduction",
+    desc: "Drops First Notice of Loss (FNOL) document intake and indexing from 2–3 business days to under 60 seconds."
+  },
+  {
+    title: "Loss Leakage Prevention",
+    desc: "Identifies altered receipts, fabricated police abstract stamps, and bills exceeding baseline regional repair benchmarks."
+  },
+  {
+    title: "Consistency in Repudiations",
+    desc: "Eliminates ambiguous rejection reasons, reducing legal exposure and statutory disputes before insurance regulatory bodies."
+  }
+];
+
+
 function AboutPage() {
   return (
     <MarketingLayout>
@@ -297,6 +345,52 @@ function AboutPage() {
             </div>
           </div>
         </section>
+
+                {/* AI in Claims Management */}
+        <section className="bg-surface-soft py-20 lg:py-28">
+          <div className="mx-auto max-w-5xl px-5 lg:px-8">
+            <div className="text-center mb-14">
+              <p className="eyebrow">Intelligence</p>
+              <h2 className="section-title mx-auto">How AI Demonstrates Clear Business Value</h2>
+              <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+                To justify integration, AI must impact measurable insurer operational metrics. Here is how ClaimsDesk applies intelligence.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 mb-16">
+              {aiBusinessValue.map((item) => (
+                <div key={item.title} className="rounded-lg border border-border/60 bg-card p-6 md:p-8 hover:-translate-y-1 transition-transform">
+                  <h3 className="text-sm font-bold leading-tight">{item.title}</h3>
+                  <p className="mt-4 text-xs leading-5 text-muted-foreground">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="rounded-lg border border-border bg-card overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-muted/50">
+                    <tr>
+                      <th className="px-6 py-4 font-bold text-foreground">Workflow Stage</th>
+                      <th className="px-6 py-4 font-bold text-foreground">AI Capability</th>
+                      <th className="px-6 py-4 font-bold text-foreground">Concrete Action</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {aiWorkflow.map((row) => (
+                      <tr key={row.stage} className="hover:bg-muted/30 transition-colors">
+                        <td className="px-6 py-4 font-medium text-foreground whitespace-nowrap">{row.stage}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.capability}</td>
+                        <td className="px-6 py-4 text-muted-foreground leading-relaxed">{row.action}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
 
         {/* CTA Section */}
         <ClaimsDemoCta />

@@ -18,11 +18,7 @@ export function Brand({ inverse = false }: { inverse?: boolean }) {
       className={`flex items-center gap-2.5 ${inverse ? "text-primary-foreground" : "text-foreground"}`}
       aria-label="ClaimsDesk home"
     >
-      <span
-        className={`grid size-9 place-items-center rounded-2xl ${inverse ? "bg-primary-foreground/10" : "bg-primary text-primary-foreground"}`}
-      >
-        <ShieldCheck className="size-5" />
-      </span>
+      <img src={inverse ? "/logo-2.png" : "/logo.png"} alt="ClaimsDesk" className={inverse ? "h-10 w-auto object-contain" : "w-8 h-8 object-contain"} />
       <span className="text-[17px] font-bold">ClaimsDesk</span>
     </Link>
   );
@@ -101,9 +97,9 @@ export function SiteHeader() {
                     asChild
                     className="h-auto flex-col items-start p-4 cursor-pointer focus:bg-secondary"
                   >
-                    <Link to="/api-contract" className="group flex flex-col w-full">
+                    <Link to="/api-docs" className="group flex flex-col w-full">
                       <div className="flex w-full items-center justify-between mb-2">
-                        <span className="font-bold text-sm text-foreground">API Contract</span>
+                        <span className="font-bold text-sm text-foreground">API Docs</span>
                         <ArrowRight className="size-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-foreground" />
                       </div>
                       <span className="text-xs text-muted-foreground leading-relaxed">
@@ -178,11 +174,11 @@ export function SiteHeader() {
               Architecture
             </Link>
             <Link
-              to="/api-contract"
+              to="/api-docs"
               onClick={() => setOpen(false)}
               className="rounded-2xl px-3 py-3 text-sm font-medium hover:bg-secondary"
             >
-              API Contract
+              API Docs
             </Link>
             <Button asChild className="mt-2 w-full justify-center">
               <Link to="/login" className="flex items-center gap-2">
@@ -220,7 +216,7 @@ function SiteFooter() {
         <div>
           <Brand inverse />
           <p className="mt-5 max-w-sm text-sm leading-6 text-ink-muted">
-            A workflow and approval platform for licensed insurers, underwriters, and
+            An automated workflow and approval platform for licensed insurers, underwriters, and
              claims teams.
           </p>
         </div>
@@ -230,7 +226,7 @@ function SiteFooter() {
             <Link to="/pricing">Pricing</Link>
             <Link to="/features">Features</Link>
             <Link to="/architecture">Architecture</Link>
-            <Link to="/api-contract">Developer API</Link>
+            <Link to="/api-docs">Developer API Docs</Link>
           </div>
         </div>
         <div>
@@ -254,7 +250,7 @@ function SiteFooter() {
       </div>
       <div className="mx-auto flex max-w-5xl flex-col gap-2 border-t border-ink-border px-5 py-5 text-xs text-ink-muted sm:flex-row sm:justify-between lg:px-8">
         <span>© 2026 ClaimsDesk. Portfolio demonstration.</span>
-        <span>Built by Verceed.</span>
+        <span>Built by Aaron M.</span>
       </div>
     </footer>
   );

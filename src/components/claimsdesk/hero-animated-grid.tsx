@@ -65,7 +65,7 @@ export function HeroAnimatedGrid() {
             gridTemplateColumns: "repeat(auto-fill, 52px)",
             gridAutoRows: "52px",
             opacity: 1,
-            backgroundImage: mousePos.x !== -1000 ? "radial-gradient(250px at " + mousePos.x + "px " + mousePos.y + "px, rgba(34, 197, 94, 0.15), transparent 100%)" : "none",
+            backgroundImage: mousePos.x !== -1000 ? "radial-gradient(250px at " + mousePos.x + "px " + mousePos.y + "px, rgba(245, 158, 11, 0.15), transparent 100%)" : "none",
             maskImage: "radial-gradient(250px at " + mousePos.x + "px " + mousePos.y + "px, black 0%, transparent 100%)",
             WebkitMaskImage: "radial-gradient(250px at " + mousePos.x + "px " + mousePos.y + "px, black 0%, transparent 100%)",
           }}

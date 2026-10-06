@@ -11,7 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as ApiContractRouteImport } from './routes/api-contract'
+import { Route as ApiDocsRouteImport } from './routes/api-docs'
 import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -32,9 +32,9 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiContractRoute = ApiContractRouteImport.update({
-  id: '/api-contract',
-  path: '/api-contract',
+const ApiDocsRoute = ApiDocsRouteImport.update({
+  id: '/api-docs',
+  path: '/api-docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArchitectureRoute = ArchitectureRouteImport.update({
@@ -86,7 +86,7 @@ const TermsRoute = TermsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-contract': typeof ApiContractRoute
+  '/api-docs': typeof ApiDocsRoute
   '/architecture': typeof ArchitectureRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -100,7 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-contract': typeof ApiContractRoute
+  '/api-docs': typeof ApiDocsRoute
   '/architecture': typeof ArchitectureRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -115,7 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/api-contract': typeof ApiContractRoute
+  '/api-docs': typeof ApiDocsRoute
   '/architecture': typeof ArchitectureRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -131,7 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/api-contract'
+    | '/api-docs'
     | '/architecture'
     | '/contact'
     | '/dashboard'
@@ -145,7 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
-    | '/api-contract'
+    | '/api-docs'
     | '/architecture'
     | '/contact'
     | '/dashboard'
@@ -159,7 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
-    | '/api-contract'
+    | '/api-docs'
     | '/architecture'
     | '/contact'
     | '/dashboard'
@@ -174,7 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ApiContractRoute: typeof ApiContractRoute
+  ApiDocsRoute: typeof ApiDocsRoute
   ArchitectureRoute: typeof ArchitectureRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
@@ -202,11 +202,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api-contract': {
-      id: '/api-contract'
-      path: '/api-contract'
-      fullPath: '/api-contract'
-      preLoaderRoute: typeof ApiContractRouteImport
+    '/api-docs': {
+      id: '/api-docs'
+      path: '/api-docs'
+      fullPath: '/api-docs'
+      preLoaderRoute: typeof ApiDocsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/architecture': {
@@ -278,7 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ApiContractRoute: ApiContractRoute,
+  ApiDocsRoute: ApiDocsRoute,
   ArchitectureRoute: ArchitectureRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,

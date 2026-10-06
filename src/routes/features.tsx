@@ -10,6 +10,7 @@ import {
   Scale,
   Globe,
   TimerReset,
+  Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MarketingLayout, PageIntro } from "@/components/claimsdesk/site-shell";
@@ -165,6 +166,64 @@ function FeaturesPage() {
             </div>
           </div>
         </section>
+                {/* AI Section */}
+        <section className="bg-surface-soft py-18">
+          <div className="mx-auto max-w-5xl px-5 lg:px-8">
+            <div className="flex items-center gap-2 text-brand">
+              <Sparkles className="size-5" />
+              <span className="text-xs font-bold uppercase tracking-[.14em]">
+                Artificial Intelligence
+              </span>
+            </div>
+            <h2 className="mt-4 text-3xl font-bold md:text-4xl">
+              Supercharge your operations with intelligent automation.
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg max-w-3xl">
+              Our embedded AI models take the heavy lifting out of claims processing, 
+              turning complex documentation and manual reviews into instant, actionable insights.
+            </p>
+            
+            <div className="mt-14 grid gap-6 md:grid-cols-2">
+              <div className="rounded-lg border border-border bg-card p-6">
+                <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-brand"></span>
+                  Straight-Through Processing (STP)
+                </h3>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  Low-value claims with zero fraud flags and high document confidence can move from Submitted directly to Approved automatically, reducing officer triage workload by up to 40%.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-6">
+                <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-brand"></span>
+                  Cycle Time Reduction
+                </h3>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  Drops First Notice of Loss (FNOL) document intake and indexing from 2–3 business days to under 60 seconds with advanced Vision & Extraction.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-6">
+                <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-brand"></span>
+                  Loss Leakage Prevention
+                </h3>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  Identifies altered receipts, fabricated police abstract stamps, and itemized bills exceeding baseline regional repair benchmarks.
+                </p>
+              </div>
+              <div className="rounded-lg border border-border bg-card p-6">
+                <h3 className="text-sm font-bold text-foreground flex items-center gap-2">
+                  <span className="size-2 rounded-full bg-brand"></span>
+                  Consistency in Repudiations
+                </h3>
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                  Generates formal rejection letters citing exact policy clauses and exclusion codes. Eliminates ambiguous rejection reasons, reducing legal exposure.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <ClaimsDemoCta />
       </main>
