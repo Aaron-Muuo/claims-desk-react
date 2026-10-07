@@ -25,7 +25,7 @@ import { MarketingLayout } from "@/components/claimsdesk/site-shell";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ClaimsDesk — Insurance Claims Automation" },
+      { title: "ClaimsDesk - Insurance Claims Automation" },
       {
         name: "description",
         content:
