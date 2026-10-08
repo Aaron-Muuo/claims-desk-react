@@ -16,6 +16,12 @@ import {
   Car,
   HeartPulse,
   Building2,
+  ScanText,
+  Calculator,
+  ShieldAlert,
+  FileSearch,
+  PenLine,
+  Zap,
 } from "lucide-react";
 import { HeroAnimatedGrid } from "@/components/claimsdesk/hero-animated-grid";
 import { ClaimsDemoCta } from "@/components/claimsdesk/claims-demo-cta";
@@ -206,6 +212,63 @@ function HomePage() {
                   Explore all features <ArrowRight className="size-4" />
                 </Link>
               </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* AI Capabilities Section */}
+        <section className="py-20 lg:py-28 bg-brand/5 border-y border-brand/10">
+          <div className="mx-auto max-w-5xl px-5 lg:px-8">
+            <div className="text-center mb-16">
+              <p className="eyebrow text-brand">Powered by AI</p>
+              <h2 className="section-title mx-auto text-foreground">Next-Generation Claims Automation</h2>
+              <p className="mt-4 text-sm text-muted-foreground max-w-2xl mx-auto">
+                ClaimsDesk integrates advanced AI to accelerate decisions, prevent fraud, and eliminate manual data entry.
+                The AI handles the heavy lifting, while your team retains full financial control.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  icon: ScanText,
+                  title: "Instant Data Extraction",
+                  description: "Automatically read and extract details from police abstracts, invoices, and receipts. No more manual typing."
+                },
+                {
+                  icon: Calculator,
+                  title: "Smart Cost Benchmarking",
+                  description: "Compare mechanic and hospital bills against local market rates to automatically flag inflated prices."
+                },
+                {
+                  icon: ShieldAlert,
+                  title: "Automated Fraud Detection",
+                  description: "AI scans every claim for suspicious patterns, duplicate submissions, and policy inconsistencies in real time."
+                },
+                {
+                  icon: FileSearch,
+                  title: "Policy Coverage Checks",
+                  description: "Cross-reference claim details against the customer's exact policy terms to highlight covered and excluded items."
+                },
+                {
+                  icon: PenLine,
+                  title: "Auto-Drafted Documents",
+                  description: "Automatically generate personalized rejection letters or payment vouchers based on the final claim decision."
+                },
+                {
+                  icon: Zap,
+                  title: "Straight-Through Processing",
+                  description: "Low-risk, low-value claims can be instantly verified and approved by AI, dropping cycle times from days to seconds."
+                }
+              ].map((aiFeature) => (
+                <div key={aiFeature.title} className="rounded-lg border border-border/60 bg-card p-6 hover:-translate-y-1 transition-transform">
+                  <div className="mb-4 inline-flex items-center justify-center rounded-lg bg-brand/10 p-2.5">
+                    <aiFeature.icon className="size-5 text-brand" />
+                  </div>
+                  <h3 className="text-sm font-bold text-foreground mb-2">{aiFeature.title}</h3>
+                  <p className="text-xs leading-relaxed text-muted-foreground">{aiFeature.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

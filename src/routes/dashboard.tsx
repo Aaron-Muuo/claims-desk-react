@@ -25,7 +25,7 @@ import {
   Settings,
   UserCircle,
   HelpCircle,
-  User,
+  User, Code2,
 } from "lucide-react";
 import { Brand } from "@/components/claimsdesk/site-shell";
 import { Badge } from "@/components/ui/badge";
@@ -416,14 +416,17 @@ function Side({
   label,
   active,
   badge,
+  onClick,
 }: {
   icon: typeof Gauge;
   label: string;
   active?: boolean;
   badge?: string;
+  onClick?: () => void;
 }) {
   return (
     <button
+      onClick={onClick}
       className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-semibold ${
         active ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-secondary"
       }`}
